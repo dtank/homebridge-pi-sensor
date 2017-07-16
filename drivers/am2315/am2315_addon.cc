@@ -8,7 +8,6 @@ using namespace v8;
 
 Persistent<Function> AM2315::constructor;
 AM2315::AM2315() {
-    temperature = 66.6;
 }
 AM2315::~AM2315() {
 }
