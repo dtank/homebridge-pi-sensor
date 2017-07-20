@@ -16,7 +16,8 @@
         "homebridge": ">=0.2.0"
     },
     "scripts": {
-        "build": "node-gyp configure && node-gyp build",
-        "test": "node test/test_am2315.js",
+        "build-debug": "node-gyp configure --debug && node-gyp build --debug",
+        "build-release": "node-gyp configure && node-gyp build",
+        "test": "node test/test_am2315.js"
     }
 }

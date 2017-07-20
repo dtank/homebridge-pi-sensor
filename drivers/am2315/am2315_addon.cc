@@ -21,6 +21,7 @@ void AM2315::Init(Local<Object> exports) {
 
     // Prototype
     NODE_SET_PROTOTYPE_METHOD(tpl, "temperature", Temperature);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "humidity", Humidity);
 
     constructor.Reset(isolate, tpl->GetFunction());
     exports->Set(String::NewFromUtf8(isolate, "AM2315"), tpl->GetFunction());
@@ -42,6 +43,13 @@ void AM2315::Temperature(const FunctionCallbackInfo<Value>& args) {
   AM2315* obj = ObjectWrap::Unwrap<AM2315>(args.Holder());
   obj->temperature = am2315_temperature(obj->am2315);
   args.GetReturnValue().Set(Number::New(isolate, obj->temperature));
+}
+
+void AM2315::Humidity(const FunctionCallbackInfo<Value>& args) {
+  Isolate* isolate = args.GetIsolate();
+  AM2315* obj = ObjectWrap::Unwrap<AM2315>(args.Holder());
+  obj->humidity = am2315_humidity(obj->am2315);
+  args.GetReturnValue().Set(Number::New(isolate, obj->humidity));
 }
 
 void RegisterModule(Local<Object> exports) {

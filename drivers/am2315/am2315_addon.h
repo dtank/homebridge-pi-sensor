@@ -14,10 +14,12 @@ private:
 
     static void New(const v8::FunctionCallbackInfo<v8::Value>& args);
     static void Temperature(const v8::FunctionCallbackInfo<v8::Value>& args);
+    static void Humidity(const v8::FunctionCallbackInfo<v8::Value>& args);
     static v8::Persistent<v8::Function> constructor;
 
     void *am2315;
     float temperature;
+    float humidity;
 
 };
 
